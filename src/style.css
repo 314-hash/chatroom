@@ -1,0 +1,208 @@
+/* src/styles.css */
+:root {
+  --dark-maroon: #520924;
+  --bright-maroon: #84173e;
+  --vibrant-red: #d3200c;
+  --bright-orange: #ff6400;
+  --cyan-accent: #23f1cc;
+
+  --background-color: var(--dark-maroon);
+  --container-bg: var(--bright-maroon);
+  --text-primary: #f0f0f0;
+  --text-secondary: #a0a0b0;
+  --accent-glow: rgba(35, 241, 204, 0.5);
+  --mention-bg: rgba(35, 241, 204, 0.2);
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  overflow: hidden; /* Prevent scrollbars during initial animation */
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Chat Container */
+.chat-container {
+  width: 90%;
+  max-width: 800px;
+  height: 90vh;
+  background: var(--container-bg);
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px var(--accent-glow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 2px solid var(--cyan-accent);
+}
+
+.chat-header {
+  padding: 15px 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid var(--cyan-accent);
+  text-align: center;
+}
+
+.chat-header h1 {
+  margin: 0;
+  font-family: 'Russo One', sans-serif;
+  color: var(--cyan-accent);
+  text-shadow: 0 0 10px var(--cyan-accent);
+}
+
+/* Messages Area */
+.messages-list {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+/* Custom scrollbar */
+.messages-list::-webkit-scrollbar {
+  width: 8px;
+}
+.messages-list::-webkit-scrollbar-track {
+  background: var(--dark-maroon);
+}
+.messages-list::-webkit-scrollbar-thumb {
+  background-color: var(--cyan-accent);
+  border-radius: 10px;
+  border: 2px solid var(--dark-maroon);
+}
+
+/* Single Message */
+.message {
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+  position: relative;
+}
+.message-inner {
+  padding: 10px 15px;
+  border-radius: 10px;
+  word-wrap: break-word;
+}
+.message-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+.message-author {
+  font-weight: 700;
+  font-size: 0.9em;
+}
+.message-time {
+  font-size: 0.75em;
+  color: var(--text-secondary);
+}
+.message.sent {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+.message.sent .message-inner {
+  background: var(--vibrant-red);
+}
+.message.sent .message-author {
+  color: var(--cyan-accent);
+}
+
+.message.received {
+  align-self: flex-start;
+  align-items: flex-start;
+}
+.message.received .message-inner {
+  background: var(--dark-maroon);
+  border: 1px solid var(--bright-orange);
+}
+.message.received .message-author {
+  color: var(--bright-orange);
+}
+
+.message-content img {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.message-content img:hover {
+    transform: scale(1.02);
+}
+
+.mention {
+  background-color: var(--mention-bg);
+  color: var(--cyan-accent);
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* Message Input Area */
+.message-input-area {
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.3);
+  border-top: 1px solid var(--cyan-accent);
+}
+.input-form {
+  display: flex;
+  gap: 10px;
+}
+.text-input {
+  flex-grow: 1;
+  background-color: var(--dark-maroon);
+  border: 1px solid var(--bright-orange);
+  border-radius: 8px;
+  padding: 12px 15px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+.text-input:focus {
+  outline: none;
+  border-color: var(--cyan-accent);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.send-button, .upload-button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Russo One', sans-serif;
+  color: var(--dark-maroon);
+  background-color: var(--cyan-accent);
+  transition: all 0.3s ease;
+}
+.send-button:hover, .upload-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+
+/* User Alias Input */
+.alias-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 40px;
+  background: var(--container-bg);
+  border-radius: 15px;
+  border: 2px solid var(--cyan-accent);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px var(--accent-glow);
+  text-align: center;
+}
+.alias-container h2 {
+    margin-top: 0;
+    font-family: 'Russo One', sans-serif;
+    color: var(--cyan-accent);
+}
